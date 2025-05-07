@@ -1,5 +1,10 @@
 from django.shortcuts import render
 from .models import Cliente, Productos
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from transbank.webpay.webpay_plus.transaction import Transaction, WebpayOptions
+from django.conf import settings
+from transbank.common.integration_type import IntegrationType
 
 def index(request):
     clientes = Cliente.objects.all()  # Cambia el nombre de la variable
@@ -54,7 +59,44 @@ def clientes_del(request, pk):
         clientes = Cliente.objects.all()
         context = {"clientes": clientes, "mensaje": mensaje}
         return render(request, 'Atienda/clientes_list.html', context)
-    
+
+@api_view(['POST'])
+def iniciar_transaccion(request):
+    body = request.data
+    buy_order = body.get('buy_order')
+    session_id = body.get('session_id')
+    amount = body.get('amount')
+    return_url = body.get('return_url')
+
+    options = WebpayOptions(
+        commerce_code=settings.TRANSBANK['commerce_code'],
+        api_key=settings.TRANSBANK['api_key'],
+        integration_type=IntegrationType.TEST
+    )
+    transaction = Transaction(options)
+    response = transaction.create(buy_order, session_id, amount, return_url)
+    return Response(response)
+
+@api_view(['POST'])
+def confirmar_transaccion(request):
+  token_ws = request.data.get('token_ws')
+
+  if not token_ws:
+    return Response({'error': 'token_ws es requerido'}, status=400)
+
+  options = WebpayOptions(
+    commerce_code=settings.TRANSBANK['commerce_code'],
+    api_key=settings.TRANSBANK['api_key'],
+    integration_type=IntegrationType.TEST
+  )
+  transaction = Transaction(options)
+  result = transaction.status(token_ws)
+  return Response(result)
+
+  def webpay_form_view(request):
+    return render(request, 'webpay_form.html')
+
+
 # def clientesUpdate(request):
 #     if request.method == "POST":
 #         rut=request.POST["rut"]

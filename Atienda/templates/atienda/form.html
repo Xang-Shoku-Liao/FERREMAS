@@ -1,0 +1,14 @@
+<form method="post">
+    {% csrf_token %}
+    <label>Articulo:</label><br>
+    <input type="text" name="buy_order"><br>
+    <label>Session ID:</label><br>
+    <input type="text" name="session_id"><br>
+    <label>Presio a pagar:</label><br>
+    <input type="number" name="amount"><br><br>
+    <button type="submit">Pagar con Webpay</button>
+    {% if error %}
+     <p style="color:red">{{ error }}</p>
+    {% endif %}
+   </form>
+  

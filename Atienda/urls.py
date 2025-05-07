@@ -1,6 +1,9 @@
 from django.urls import path
 from Atienda.views import main
 from . import views
+from .views import webpay_form_view, iniciar_transaccion, confirmar_transaccion
+
+
 
 
 urlpatterns = [
@@ -12,7 +15,10 @@ urlpatterns = [
     path('main/', views.main, name='main'),
     path('contacto/', views.contacto, name='contacto'),
     path('productos/', views.productos, name='productos'),  
-    path('', main , name='main'),
+    path("form/", webpay_form_view, name="webpay_formulario"),
+    path("api/webpay/iniciar/", iniciar_transaccion, name="iniciar_transaccion"),
+    path("api/webpay/confirmar/", confirmar_transaccion, name="confirmar_transaccion"),
+    path('admin/', admin.site.urls),
     
 
 ]
