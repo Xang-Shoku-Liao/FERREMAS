@@ -1,0 +1,221 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'productos.css' %}">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{% static 'validation.js' %}"></script>
+</head>
+
+<section class="intro">
+    <div class="loginPopup">
+        <div class="login-form">
+            <span class="closex" id="closeBtn">&times;</span>
+            <h1>Registration Form</h1>
+            <form id="registroForm">
+                <label for="rut">Rut:</label>
+                <input type="text" id="rut" name="rut"><br>
+
+                <label for="nombre">Name:</label>
+                <input type="text" id="nombre" name="nombre"><br>
+
+                <label for="apellidoPaterno">Last name:</label>
+                <input type="text" id="apellidoPaterno" name="apellidoPaterno"><br>
+
+                <label for="apellidoMaterno">Matriname:</label>
+                <input type="text" id="apellidoMaterno" name="apellidoMaterno"><br>
+                <div class="form-group">
+                    <label for="edad">Age:</label>
+                    <input type="number" id="edad" name="edad"><br>
+
+                    <label for="genero">Gender:</label>
+                    <select id="genero" name="genero">
+                        <option value="">Opcions</option>
+                        <option value="masculino">Male</option>
+                        <option value="femenino">Female</option>
+                        <option value="otro">uhg...</option>
+                    </select><br>
+                </div>
+
+                <label for="celular">Phone:</label>
+                <input type="text" id="celular" name="celular"><br>
+
+                <button type="submit">Register</button>
+
+            </form>
+
+        </div>
+    </div>
+</section>
+
+<body class="">
+    <nav>
+        <div class="nav-logo">
+            <a href="#">
+                <h1>Sotiplants</h1>
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li class="link"><a href="{% url 'main' %}">Inicio</a></li>
+            <li id="link1" class="link"><a href="{% url 'productos' %}">Productos</a></li>
+            <li id="link2" class="link"><a href="{% url 'contacto' %}">Contacto</a></li>
+            <li id="link3" class="link"><a href="#">About</a></li>
+        </ul>
+        <button class="Regbtn">Registrate</button>
+
+    </nav>
+    <div class="container">
+        <header>
+            <span class="blur"></span>
+            <span class="blur"></span>
+            <h1>Todos los productos</h1>
+                
+            
+            <button class="e">Plantas</button>
+            <button class="e">Maceteros</button>
+            <button class="e">Tierra de Hojas</button>
+            <button class="e">Decoraciones</button>
+            <div class="shopping">
+                <img src="{% static 'image/shopping.svg' %}">
+                <span class="quantity">0</span>
+            </div>
+         
+        </header>
+
+
+        <div class="product-list">
+            {% for x in objplant %}
+            <div class="productos">
+                <img class="producto-imagen" src="{{ x.foto.url }}" alt="{{ x.nombre }}">
+                <div class="producto-detalles">
+                    <h4 class="producto-titulo">{{ x.nombre_producto }}</h4>
+                    <p class="producto-precio">{{ x.precio }}</p>
+                    <button class="addtocart" data-name="{{ x.nombre_producto }}" data-img="{{ x.foto.url }}"
+                        data-price="{{ x.precio }}" onclick="addToCart(this)">Add to Cart</button>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+        <div class="product-list2">
+            {% for x in macetero %}
+            <div class="productos">
+                <img class="producto-imagen" src="{{ x.foto.url }}" alt="{{ x.nombre }}">
+                <div class="producto-detalles">
+                    <h4 class="producto-titulo">{{ x.nombre_producto }}</h4>
+                    <p class="producto-precio">{{ x.precio }}</p>
+                    <button class="addtocart" data-name="{{ x.nombre_producto }}" data-img="{{ x.foto.url }}"
+                        data-price="{{ x.precio }}" onclick="addToCart(this)">Add to Cart</button>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+        <div class="product-list3">
+            {% for x in tierra %}
+            <div class="productos">
+                <img class="producto-imagen" src="{{ x.foto.url }}" alt="{{ x.nombre }}">
+                <div class="producto-detalles">
+                    <h4 class="producto-titulo">{{ x.nombre_producto }}</h4>
+                    <p class="producto-precio">{{ x.precio }}</p>
+                    <button class="addtocart" data-name="{{ x.nombre_producto }}" data-img="{{ x.foto.url }}"
+                        data-price="{{ x.precio }}" onclick="addToCart(this)">Add to Cart</button>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+        <div class="product-list4">
+            {% for x in decoraciones %}
+            <div class="productos">
+                <img class="producto-imagen" src="{{ x.foto.url }}" alt="{{ x.nombre }}">
+                <div class="producto-detalles">
+                    <h4 class="producto-titulo">{{ x.nombre_producto }}</h4>
+                    <p class="producto-precio">{{ x.precio }}</p>
+                    <button class="addtocart" data-name="{{ x.nombre_producto }}" data-img="{{ x.foto.url }}"
+                        data-price="{{ x.precio }}" onclick="addToCart(this)">Add to Cart</button>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+
+
+    </div>
+    </div>
+    <div class="card">
+        <h1>Tu carrito</h1>
+        <ul class="listCard">
+
+        </ul>
+        <div class="checkOut">
+            <div class="total">0</div>
+            <div class="closeShopping">Close</div>
+        </div>
+    </div>
+</body>
+
+
+<footer class="container">
+    <span class="blur"></span>
+    <span class="blur"></span>
+    <div class="column">
+        <div class="logo">
+            <h1>DuocUc</h1>
+        </div>
+        <p>
+            Trabajo para DuocUc, proyecto de jardinería.
+        </p>
+        <div class="socials">
+            <a href="#"><i class="ri-youtube-line"></i></a>
+            <a href="#"><i class="ri-instagram-line"></i></a>
+            <a href="#"><i class="ri-twitter-line"></i></a>
+        </div>
+    </div>
+
+    <div class="column">
+        <h4>Compañía</h4>
+        <a href="#">Negocios</a>
+        <a href="#">Colaboraciones</a>
+        <a href="#">Red</a>
+    </div>
+    <div class="column">
+        <h4>Sobre Nosotros</h4>
+        <a href="#">Blogs</a>
+        <a href="#">Canales</a>
+        <a href="#">Patrocinadores</a>
+    </div>
+    <div class="column">
+        <h4>Contacto</h4>
+        <a href="#">Contáctanos</a>
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Términos y Condiciones</a>
+    </div>
+</footer>
+
+<div class="copyright">
+    Copyright © 2024 Comunidad de jardinería.
+</div>
+
+
+<script src="{% static 'app.js' %}"></script>
+<script>
+    var imagePath = "{% static 'images/' %}";
+</script>
+
+</body>
+
+</html>
+

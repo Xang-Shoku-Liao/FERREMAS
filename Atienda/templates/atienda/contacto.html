@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{% static 'validation.js' %}"></script>
+
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-logo">
+            <a href="#">
+                <h1>Sotiplants</h1>
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li class="link"><a href="{% url 'main' %}">Inicio</a></li>
+            <li id="link1" class="link"><a href="{% url 'productos' %}">Productos</a></li>
+            <li id="link2" class="link"><a href="{% url 'contacto' %}">Contacto</a></li>
+            <li id="link3" class="link"><a href="#">About</a></li>
+        </ul>
+        <button class="Regbtn">Registrate</button>
+    </nav>
+
+    <section class="intro">
+        <div class="loginPopup">
+            <div class="login-form">
+                <span class="closex" id="closeBtn">&times;</span>
+                <h1>Registration Form</h1>
+                <form id="registroForm">
+                    <label for="rut">Rut:</label>
+                    <input type="text" id="rut" name="rut"><br>
+
+                    <label for="nombre">Name:</label>
+                    <input type="text" id="nombre" name="nombre"><br>
+
+                    <label for="apellidoPaterno">Last name:</label>
+                    <input type="text" id="apellidoPaterno" name="apellidoPaterno"><br>
+
+                    <label for="apellidoMaterno">Matriname:</label>
+                    <input type="text" id="apellidoMaterno" name="apellidoMaterno"><br>
+                    <div class="form-group">
+                        <label for="edad">Age:</label>
+                        <input type="number" id="edad" name="edad"><br>
+
+                        <label for="genero">Gender:</label>
+                        <select id="genero" name="genero">
+                            <option value="">Opcions</option>
+                            <option value="masculino">Male</option>
+                            <option value="femenino">Female</option>
+                            <option value="otro">uhg...</option>
+                        </select><br>
+                    </div>
+
+                    <label for="celular">Phone:</label>
+                    <input type="text" id="celular" name="celular"><br>
+
+                    <button type="submit">Register</button>
+
+                </form>
+
+            </div>
+        </div>
+
+        <div class="container">
+
+
+            <h1>¿Quiénes somos?</h1>
+
+            <h2>Nos complace presentarles <strong>Sotiplants,</strong>
+                una iniciativa comunitaria sin fines de lucro dedicada a la venta de plantas
+                y a la promoción de la jardinería sostenible. Somos una comunidad de vecinos apasionados
+                por la naturaleza y comprometidos con el medio ambiente. Nuestro objetivo es fomentar el amor por las
+                plantas y el cuidado del entorno a través de la accesibilidad y la educación.</h2>
+
+
+            <h2>En <strong>Sotiplants,</strong> creemos que todos merecen la oportunidad de disfrutar de un espacio verde,
+                sin importar el tamaño de su hogar o su experiencia en jardinería. Ofrecemos una amplia v
+                ariedad de plantas cuidadosamente cultivadas por nuestros vecinos, desde hermosas flores y plantas
+                ornamentales hasta vegetales y hierbas aromáticas para su huerto urbano.</h2>
+
+
+            <h2>Lo que hace a <strong>Sotiplants</strong> especial es que todos los fondos recaudados se reinvierten
+                en la comunidad. Cada planta que adquieres no solo embellece tu hogar,
+                sino que también apoya proyectos locales de sostenibilidad, talleres educativos
+                y la creación de espacios verdes compartidos en nuestro vecindario. De esta manera,
+                juntos contribuimos al bienestar común y al desarrollo de un entorno más saludable y
+                ecológico.</h2>
+
+
+        </div>
+
+
+
+
+<footer class="container">
+    <span class="blur"></span>
+    <span class="blur"></span>
+    <div class="column">
+        <div class="logo">
+            <h1>DuocUc</h1>
+        </div>
+        <p>
+            Trabajo para DuocUc, proyecto de jardinería.
+        </p>
+        <div class="socials">
+            <a href="#"><i class="ri-youtube-line"></i></a>
+            <a href="#"><i class="ri-instagram-line"></i></a>
+            <a href="#"><i class="ri-twitter-line"></i></a>
+        </div>
+    </div>
+
+    <div class="column">
+        <h4>Compañía</h4>
+        <a href="#">Negocios</a>
+        <a href="#">Colaboraciones</a>
+        <a href="#">Red</a>
+    </div>
+    <div class="column">
+        <h4>Sobre Nosotros</h4>
+        <a href="#">Blogs</a>
+        <a href="#">Canales</a>
+        <a href="#">Patrocinadores</a>
+    </div>
+    <div class="column">
+        <h4>Contacto</h4>
+        <a href="#">Contáctanos</a>
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Términos y Condiciones</a>
+    </div>
+</footer>
+
+<div class="copyright">
+    Copyright © 2024 Comunidad de jardinería.
+</div>
+
+
+
+
+
+</body>
+<script>
+    window.onload = function () {
+        document.querySelector(".Regbtn").addEventListener("click", function () {
+            document.querySelector(".loginPopup").style.display = "flex";
+        });
+    }
+
+    document.getElementById("closeBtn").addEventListener("click", function () {
+        document.querySelector(".loginPopup").style.display = "none";
+    });
+
+
+</script>
+
+</html>
