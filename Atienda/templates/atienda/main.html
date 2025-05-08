@@ -1,0 +1,258 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{% static 'validation.js' %}"></script>
+    
+
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-logo">
+            <a href="#">
+                <h1>Ferremas</h1>
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li class="link"><a href="{% url 'main' %}">Inicio</a></li>
+            <li id="link1" class="link"><a href="{% url 'productos' %}">Productos</a></li>
+            <li id="link2" class="link"><a href="{% url 'contacto' %}">Contacto</a></li>
+            <li id="link3" class="link"><a href="#">About</a></li>
+        </ul>
+        <button class="Regbtn">Registrate</button>
+    </nav>
+
+    <header class="container">
+        <div class="content">
+            <span class="blur"></span>
+            <span class="blur"></span>
+            <H1>Bienvenidos ,<br></b> Tenemos de todo sobre ferremas</H1>
+            <p>
+                Somos una fundación sin fines de lucro que se dedica a la jardinería,
+                tenemos de todo para tu jardín, desde plantas, arboles, decoraciones y mucho más.
+            </p>
+            <button class="Regbtn">Comienza Aquí</button>
+        </div>
+        <div class="image">
+            <img src="{% static 'image/ferreteria.png' %}" alt="Ferretería">
+        </div>
+    </header>
+    <!-- /* registro */ -->
+    <section class="intro">
+        <div class="loginPopup">
+            <div class="login-form">
+                <span class="closex" id="closeBtn">&times;</span>
+                <h1>Registro</h1>
+                <form id="registroForm">
+                    <label for="rut">Rut:</label>
+                    <input type="text" id="rut" name="rut"><br>
+
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre"><br>
+
+                    <label for="apellidoPaterno">Apellido Paterno:</label>
+                    <input type="text" id="apellidoPaterno" name="apellidoPaterno"><br>
+
+                    <label for="apellidoMaterno">Apellido Materno:</label>
+                    <input type="text" id="apellidoMaterno" name="apellidoMaterno"><br>
+                    <div class="form-group">
+                        <label for="edad">Edad:</label>
+                        <input type="number" id="edad" name="edad"><br>
+
+                        <label for="genero">Genero:</label>
+                        <select id="genero" name="genero">
+                            <option value="">Genero</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="femenino">Femenino</option>
+                            <option value="otro">Otro...</option>
+                        </select><br>
+                    </div>
+
+                    <label for="celular">Celular:</label>
+                    <input type="text" id="celular" name="celular"><br>
+
+                    <button type="submit">registro</button>
+
+                </form>
+
+            </div>
+        </div>
+
+        <!-- /* texto cards */ -->
+
+        <section class="container">
+            <h2 class="header">Puedes encontrar...</h2>
+            <div class="features">
+                <div class="card">
+                    <span><i class="ri-tools-line"></i></span>
+                    <h4>Herramientas</h4>
+                    <p>
+                        Incluye herramientas manuales y eléctricas (ej: taladros, destornilladores, alicates, sierras)
+                    </p>
+                    <a href="{% url 'productos' %}">En Stock <i class="ri-arrow-right-line"></i></a>
+                </div>
+                <div class="card">
+                    <span><i class="ri-home-line"></i></span>
+                    <h4>Materiales de Construcción</h4>
+                    <p>
+                        Todo lo relacionado a construcción gruesa y terminaciones (ej: cemento, yeso, ladrillos, pinturas)
+                    </p>
+                    <a href="{% url 'productos' %}">En Stock <i class="ri-arrow-right-line"></i></a>
+                </div>
+                
+                
+                <div class="card">
+                    <span><i class="ri-flashlight-line"></i></span>
+                    <h4>Electricidad y Plomería</h4>
+                    <p>
+                        Cables, enchufes, grifería, cañerías, conexiones eléctricas y sanitarias
+                    </p>
+                    <a href="{% url 'productos' %}">En Stock <i class="ri-arrow-right-line"></i></a>
+                </div>
+                <div class="card">
+                    <span><i class="ri-shield-user-line"></i></span>
+                    <h4>Seguridad y Accesorios</h4>
+                    <p>
+                        Elementos de protección personal y consumibles (ej: guantes, cascos, cintas, discos, tornillos)
+                    </p>
+                    <a href="{% url 'productos' %}">En Stock <i class="ri-arrow-right-line"></i></a>
+                </div>
+            </div>
+        </section>
+        
+
+
+        <!-- /* texto cards */ -->
+
+        <section class="container">
+            <h2 class="header">Accede a nuevos benificios!</h2>
+            <p class="sub-header">
+                Con cualtier tipo de donación monetaria estará dentro de
+                un plan de descuento del 5% en el total de su venta.
+            </p>
+            <div class="pricing">
+                <div class="card">
+                    <div class="content">
+                        <h4>Subscripción</h4>
+                        <h3>5$</h3>
+                        <p>
+                            <i class="ri-checkbox-circle-line"></i>
+                            5% de descuento en el total de tu compra
+                        </p>
+                        <p>
+                            <!-- <i class="ri-checkbox-circle-line"></i>
+                        nada aun -->
+                        </p>
+                    </div>
+                    <button class="btn">Únete Ahora</button>
+                </div>
+                <div class="card">
+                    <div class="content">
+                        <h4>Subscripción</h4>
+                        <h3>0$</h3>
+                        <p>
+                            <!-- <i class="ri-checkbox-circle-line"></i>
+                        Smart coding plan
+                    </p>
+                    <p>
+                        <i class="ri-checkbox-circle-line"></i>
+                        At home workouts -->
+                        </p>
+                    </div>
+                    <button class="btn">Únete Ahora</button>
+                </div>
+                <div class="card">
+                    <div class="content">
+                        <h4>Subscripción</h4>
+                        <h3>0$</h3>
+                        <p>
+                            <!-- <i class="ri-checkbox-circle-line"></i>
+                        Smart coding plan
+                    </p>
+                    <p>
+                        <i class="ri-checkbox-circle-line"></i>
+                        At home workouts -->
+                        </p>
+                    </div>
+                    <button class="btn">Únete Ahora</button>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- /* footer */ -->
+        <footer class="container">
+            <span class="blur"></span>
+            <span class="blur"></span>
+            <div class="column">
+                <div class="logo">
+                    <h1>DuocUc</h1>
+                </div>
+                <p>
+                    Trabajo para DuocUc, proyecto de jardinería.
+                </p>
+                <div class="socials">
+                    <a href="https://www.youtube.com/embed/wnvDPD-oviE" target="_blank"><i class="ri-youtube-line"></i></a>
+                    <a href="https://www.instagram.com/institutodejardineriaonline/" target="_blank"><i class="ri-instagram-line"></i></a>
+                    <a href="https://x.com/Love_plants" target="_blank"><i class="ri-twitter-line"></i></a>
+                </div>
+            </div>
+
+            <div class="column">
+                <h4>Compañía</h4>
+                <a href="#">Negocios</a>
+                <a href="#">Colaboraciones</a>
+                <a href="#">Red</a>
+            </div>
+            <div class="column">
+                <h4>Sobre Nosotros</h4>
+                <a href="#">Blogs</a>
+                <a href="#">Canales</a>
+                <a href="#">Patrocinadores</a>
+            </div>
+            <div class="column">
+                <h4>Contacto</h4>
+                <a href="#">Contáctanos</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos y Condiciones</a>
+            </div>
+        </footer>
+
+        <div class="copyright">
+            Copyright © 2024 Comunidad de jardinería.
+        </div>
+
+
+
+
+
+</body>
+<script>
+    window.onload = function () {
+        document.querySelector(".Regbtn").addEventListener("click", function () {
+            document.querySelector(".loginPopup").style.display = "flex";
+        });
+    }
+
+    document.getElementById("closeBtn").addEventListener("click", function () {
+        document.querySelector(".loginPopup").style.display = "none";
+    });
+
+
+
+</script>
+
+</html>
