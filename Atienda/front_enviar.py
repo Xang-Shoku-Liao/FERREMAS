@@ -19,11 +19,11 @@ def webpay_form_view(request):
     if response.status_code == 200:
       data = response.json()
       # Redirige al formulario de Webpay con token
-      return render(request, "front/verificar.html", {
+      return render(request, "Atienda/verificar.html", {
         "url": data["url"],
         "token": data["token"]
       })
 
-    return render(request, "front/form.html", {"error": "Error al iniciar transacción"})
+    return render(request, "Atienda/form.html", {"error": "Error al iniciar transacción"})
 
-  return render(request, "front/form.html")
+  return render(request, "Atienda/form.html")

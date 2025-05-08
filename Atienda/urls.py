@@ -1,8 +1,8 @@
 from django.urls import path
 from Atienda.views import main
 from . import views
-from .views import webpay_form_view, iniciar_transaccion, confirmar_transaccion
-
+from .views import iniciar_transaccion, confirmar_transaccion
+from .front_enviar import webpay_form_view
 
 
 
@@ -18,9 +18,7 @@ urlpatterns = [
     path("form/", webpay_form_view, name="webpay_formulario"),
     path("api/webpay/iniciar/", iniciar_transaccion, name="iniciar_transaccion"),
     path("api/webpay/confirmar/", confirmar_transaccion, name="confirmar_transaccion"),
-    path('admin/', admin.site.urls),
     
-
 ]
 
 
